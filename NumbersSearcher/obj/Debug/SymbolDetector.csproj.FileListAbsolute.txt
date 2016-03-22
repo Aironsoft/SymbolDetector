@@ -1,0 +1,9 @@
+C:\Users\Airon\Documents\Visual Studio 2015\Projects\NumbersSearcher\NumbersSearcher\bin\Debug\NumbersSearcher.exe.config
+C:\Users\Airon\Documents\Visual Studio 2015\Projects\NumbersSearcher\NumbersSearcher\bin\Debug\NumbersSearcher.exe
+C:\Users\Airon\Documents\Visual Studio 2015\Projects\NumbersSearcher\NumbersSearcher\bin\Debug\NumbersSearcher.pdb
+C:\Users\Airon\Documents\Visual Studio 2015\Projects\NumbersSearcher\NumbersSearcher\obj\Debug\SymbolDetector.csprojResolveAssemblyReference.cache
+C:\Users\Airon\Documents\Visual Studio 2015\Projects\NumbersSearcher\NumbersSearcher\obj\Debug\NumbersSearcher.Form.resources
+C:\Users\Airon\Documents\Visual Studio 2015\Projects\NumbersSearcher\NumbersSearcher\obj\Debug\NumbersSearcher.Properties.Resources.resources
+C:\Users\Airon\Documents\Visual Studio 2015\Projects\NumbersSearcher\NumbersSearcher\obj\Debug\SymbolDetector.csproj.GenerateResource.Cache
+C:\Users\Airon\Documents\Visual Studio 2015\Projects\NumbersSearcher\NumbersSearcher\obj\Debug\NumbersSearcher.exe
+C:\Users\Airon\Documents\Visual Studio 2015\Projects\NumbersSearcher\NumbersSearcher\obj\Debug\NumbersSearcher.pdb

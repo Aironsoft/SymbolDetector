@@ -1,0 +1,9 @@
+c:\users\airon\documents\visual studio 2015\Projects\NumbersSearcher\NumbersSearcher\bin\Debug\NumbersSearcher.exe.config
+c:\users\airon\documents\visual studio 2015\Projects\NumbersSearcher\NumbersSearcher\obj\Debug\NumbersSearcher.Properties.Resources.resources
+c:\users\airon\documents\visual studio 2015\Projects\NumbersSearcher\NumbersSearcher\obj\Debug\NumbersSearcher.csproj.GenerateResource.Cache
+c:\users\airon\documents\visual studio 2015\Projects\NumbersSearcher\NumbersSearcher\bin\Debug\NumbersSearcher.exe
+c:\users\airon\documents\visual studio 2015\Projects\NumbersSearcher\NumbersSearcher\bin\Debug\NumbersSearcher.pdb
+c:\users\airon\documents\visual studio 2015\Projects\NumbersSearcher\NumbersSearcher\obj\Debug\NumbersSearcher.exe
+c:\users\airon\documents\visual studio 2015\Projects\NumbersSearcher\NumbersSearcher\obj\Debug\NumbersSearcher.pdb
+C:\Users\Airon\Documents\Visual Studio 2015\Projects\NumbersSearcher\NumbersSearcher\obj\Debug\NumbersSearcher.Form.resources
+C:\Users\Airon\Documents\Visual Studio 2015\Projects\NumbersSearcher\NumbersSearcher\obj\Debug\NumbersSearcher.csprojResolveAssemblyReference.cache
