@@ -53,9 +53,9 @@ namespace NumbersSearcher
             }
             return instance;
         }
-        public void AddNeuron(char symbol)
+        public void AddNeuron(char symbol, int num)
         {
-            net.AddNeuron(symbol);
+            net.AddNeuron(symbol, num);
         }
 
 

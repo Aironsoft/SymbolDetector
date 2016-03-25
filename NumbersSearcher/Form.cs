@@ -62,11 +62,24 @@ namespace NumbersSearcher
                 string delta_s = "";
                 if (lastCorrectionCount!=-1)
                 {
-                    int delta = 100 * (lastCorrectionCount - count) / lastCorrectionCount;
-                    if (delta < 0)
-                        delta_s = "(+" + (-delta).ToString() + "%)";
+                    int delta = 0;
+
+                    if (lastCorrectionCount != 0)
+                    {
+                        delta = 100 * (lastCorrectionCount - count) / lastCorrectionCount;
+
+                        if (delta < 0)
+                            delta_s = "(+" + (-delta).ToString() + "%)";
+                        else
+                            delta_s = "(-" + delta.ToString() + "%)";
+                    }
                     else
-                        delta_s = "(-" + delta.ToString() + "%)";
+                    {
+                        if(count!=0)
+                            delta_s = "(+INF%)";
+                        else
+                            delta_s = "(+0%)";
+                    }
                 }
                 tbCorrectionCounts.Text += ", " + count + delta_s;
             }
@@ -80,9 +93,7 @@ namespace NumbersSearcher
         public Bitmap GetBitmapImage()
         {
             Bitmap result = null;
-            //Result.Text = text;
             result = new Bitmap(Preview.Image, new Size(320, 240));
-            //Result.Refresh();
 
             return result;
         }
@@ -99,12 +110,24 @@ namespace NumbersSearcher
                 StreamReader sr = null;
                 try
                 {
+                    int num = -1, denum=0;//порядковый номер символа
                     sr = new StreamReader("chars.txt");
                     string line;
                     while ((line = sr.ReadLine()) != null)
                     {
-                        char smb = line[0];
-                        objects.AddNeuron(smb);
+                        string[] data = line.Split(' ');
+                        
+                        char smb = data[0][0];
+                        try
+                        {
+                            num = Convert.ToInt32(data[1]);
+
+                            objects.AddNeuron(smb, num - denum);
+                        }
+                        catch//если не удалась конвертация
+                        {
+                            denum++;//увеличить счётчик пропущенных символов
+                        }
                     }
                     
                 }
@@ -239,7 +262,7 @@ namespace NumbersSearcher
         /// <summary>
         /// Запускает обучение по всем символам
         /// </summary>
-        /// <returns>Символ и его вид, в котором возникла ошибка</returns>
+        /// <returns>Количество исправлений</returns>
         private int Training()
         {
             int result = 0;
@@ -279,7 +302,7 @@ namespace NumbersSearcher
                     }
 
                     string trainResult = objects.Recognize(points);
-                    //Result.Text = trainResult;
+                    Result.Invoke(prntResult, (trainResult));
 
                     if (trainResult != symbol.ToString())
                     {
@@ -292,8 +315,7 @@ namespace NumbersSearcher
                         catch { }
 
                         objects.Correct(symbol, badSymbol, points);
-
-                        //this.Refresh();
+                        
                         rtbReaction.Invoke(prntReaction, (trainResult + "->" + symbol.ToString() + " (" + Path + ")\n"));
                         objects.Save();
 
@@ -316,7 +338,7 @@ namespace NumbersSearcher
         /// </summary>
         /// <param name="symbol">Имя символа</param>
         /// <param name="k">Вид символа</param>
-        /// <returns>Символ и его вид, в котором возникла ошибка</returns>
+        /// <returns>Возникла ли ошибка</returns>
         private bool Training(char symbol, int k)
         {
             if (!training)
@@ -350,11 +372,11 @@ namespace NumbersSearcher
 
             string trainResult = objects.Recognize(points);
             Result.Invoke(prntResult, (trainResult));//вызов делегата, где второй аргумент - аргумент для делегата
-            //Result.Text = trainResult;
 
             if (trainResult != symbol.ToString())
             {
                 char badSymbol = '\0';
+
                 try
                 {
                     badSymbol = Convert.ToChar(trainResult);
@@ -365,8 +387,7 @@ namespace NumbersSearcher
 
                 rtbReaction.Invoke(prntReaction, (trainResult + "->" + symbol.ToString() + " (" + Path + ")\n"));
                 objects.Save();
-
-                //return symbol + " " + k;
+                
                 return false;
             }
 

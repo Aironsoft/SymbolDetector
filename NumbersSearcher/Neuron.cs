@@ -16,8 +16,13 @@ namespace NumbersSearcher
         
         //Метка изменения 
         bool change = false;
+
         //последнее выданное значение 
         int lastY = -1;
+
+        //порядковый номер символа
+        int Num=-1;
+
         public int LastY
         { get { return lastY; } }
         char symbol;
@@ -30,16 +35,17 @@ namespace NumbersSearcher
 
         String FileName = "";
         private void SetFileName()
-        { FileName = symbol.ToString() + ".txt"; }
+        { FileName = Num.ToString() + ".txt"; }  //FileName = Num.ToString() + symbol.ToString() + ".txt";
 
         //методы
 
         //создание нейрона
-        //попытка прочитать данные из файла с именем (символ+".txt")
+        //попытка прочитать данные из файла с именем (Num+".txt") //(символ+".txt")
         //при неудачном чтении из файла - заполнение матрицы весов случайными числами
-        public Neuron(char RecognizingSymbol, int PointCount)
+        public Neuron(char RecognizingSymbol, int num, int PointCount)
         {
             symbol = RecognizingSymbol;
+            Num = num;
             SetFileName();
             pointCount = PointCount + 1;
             w = new List<double>(pointCount);
@@ -114,6 +120,7 @@ namespace NumbersSearcher
         public void Save()
         {
             if (!change) return;
+
             file = File.Create(FileName);
             sw = new StreamWriter(file);
             foreach(double ww in w)    
@@ -123,7 +130,8 @@ namespace NumbersSearcher
             }
             sw.Close();
             file.Close();
-            
+
+            change = false;
         }
         
     }

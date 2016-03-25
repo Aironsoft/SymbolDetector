@@ -9,6 +9,8 @@ namespace NumbersSearcher
     //сети
     class Net
     {
+        public int symbolCounts = 0;
+
         //создание сети с заданным разрешением изображения (количество точек)
         public Net(int pointCount)
         {
@@ -25,10 +27,11 @@ namespace NumbersSearcher
         int resolution;
         List<Neuron> net = new List<Neuron>();
 
-        //добавление нейрона - crate
-        public void AddNeuron(char symbol)
+        //добавление нейрона - create
+        public void AddNeuron(char symbol, int num)
         {
-            net.Add(new Neuron(symbol, resolution));
+            symbolCounts++;
+            net.Add(new Neuron(symbol, num, resolution));
         }
         int lastNeuron;
 
@@ -105,10 +108,10 @@ namespace NumbersSearcher
 
             if (!check) //если исправляемый символ не был обнаружен
             {
-                net.Add(new Neuron(symbol, x.Count-1));
+                net.Add(new Neuron(symbol, ++symbolCounts, x.Count-1));
                 net[net.Count - 1].Correct(x, 1, speed);
                 StreamWriter write = new StreamWriter("chars.txt", true);
-                write.WriteLine(symbol);
+                write.WriteLine(symbol+" "+ symbolCounts.ToString());
                 write.Close();
             }
 
